@@ -7,7 +7,7 @@ export const getStudentRepo = async (id:string): Promise<Student> => {
   const db = dbConfig();
   
 
-  let sql = `select * from students where id = $1`;
+  let sql = `select * from student where id = $1`;
 
    
   const params=[id]

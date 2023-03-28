@@ -13,7 +13,7 @@ export const deleteStudentRepo = async (id:string):Promise<string> => {
 
         const sql = `
         DELETE FROM
-          students
+          student
         WHERE
            id = $1 RETURNING id`
       

@@ -13,7 +13,7 @@ export const updateStudentRepo = async (
     const db = dbConfig();
 
     const sql = `
-  UPDATE students SET
+  UPDATE student SET
   firstName = $1,
   lastName = $2,
   gender = $3,

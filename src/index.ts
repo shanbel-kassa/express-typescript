@@ -1,7 +1,10 @@
-import express, { Express} from "express";
+import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { studentRoute } from "./routes/student.route";
-import  bodyParser  from 'body-parser'
+import  {SwaggerConfig} from "./config/swagger"
+const bodyParser = require('body-parser')
+const swaggerJsdoc = require("swagger-jsdoc")
+const  swaggerUi = require("swagger-ui-express");
 
 dotenv.config();
 
@@ -16,5 +19,11 @@ app.use(bodyParser.json())
 
 app.use("/students", studentRoute());
 
-app.listen(port, () => console.log(`app listing on http://localhost:${port}`));
+const specs = swaggerJsdoc(SwaggerConfig());
+  app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(specs)
+  );
+app.listen(port, () => console.log(`app listing on http://localhost:${port}/api-docs`));
 

@@ -8,7 +8,7 @@ export const createStudentRepo = async (student: Student): Promise<Student> => {
   const db = dbConfig();
 
   const sql = `
-    INSERT INTO students (
+    INSERT INTO student (
       id,
       firstName,
       lastName,
